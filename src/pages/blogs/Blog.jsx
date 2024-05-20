@@ -26,7 +26,7 @@ const Blog = () => {
   },[])
   return (
     <div className='blogCard'>
-    {blogs&& blogs.map(blog=>(
+    {blogs.length&& blogs.map(blog=>(
       <Card
         id ={blog._id}
         isUser={localStorage.getItem('userId')===blog?.user._id}

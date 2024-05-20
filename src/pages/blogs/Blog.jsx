@@ -8,7 +8,12 @@ const Blog = () => {
   //get all blogs
   const getAllBlogs=async()=>{
     try {
-      const {data}=await axios.get('https://blog-backend-red-two.vercel.app/api/v1/blog/all-blog');
+      const {data}=await axios.get('https://blog-backend-red-two.vercel.app/api/v1/blog/all-blog',{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      });
       if(data?.success){
         setBlogs(data.blogs)
       }

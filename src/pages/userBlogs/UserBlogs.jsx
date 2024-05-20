@@ -12,7 +12,12 @@ const UserBlogs = () => {
   const getuserBlogs=async()=>{
     try {
       const id=localStorage.getItem('userId')
-      const {data}=await axios.get(`https://blog-backend-red-two.vercel.app/api/v1/blog/user-blog/${id}`);
+      const {data}=await axios.get(`https://blog-backend-red-two.vercel.app/api/v1/blog/user-blog/${id}`,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      });
 
       if(data?.success){
         setBlogs(data?.userBlog.blogs)

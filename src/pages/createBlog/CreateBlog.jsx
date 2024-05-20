@@ -23,6 +23,11 @@ const CreateBlog = () => {
         description:input.description,
         image:input.image,
         user:userId
+      } ,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
       });
 
       if(data?.success){

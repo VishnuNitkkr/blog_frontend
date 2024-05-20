@@ -14,7 +14,12 @@ const Card = ({id,isUser,title,description,image,user,time}) => {
 
   const handleDelete=async()=>{
      try {
-       const {data}= await axios.delete(`https://blog-backend-red-two.vercel.app/api/v1/blog/delete-blog/${id}`)
+       const {data}= await axios.delete(`https://blog-backend-red-two.vercel.app/api/v1/blog/delete-blog/${id}`,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      })
        if(data?.success){
         toast.success("blog deleted");
         navigate('/user-blog')

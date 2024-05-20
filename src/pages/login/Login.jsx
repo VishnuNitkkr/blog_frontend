@@ -29,7 +29,13 @@ const Login = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
-      const {data}= await axios.post('https://blog-backend-red-two.vercel.app/api/v1/user/login',{email:input.email,password:input.password})
+      const {data}= await axios.post('https://blog-backend-red-two.vercel.app/api/v1/user/login',{email:input.email,password:input.password},{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      })
+      
       console.log(data)
       if(data?.success){
         localStorage.setItem('userId',data?.user._id);

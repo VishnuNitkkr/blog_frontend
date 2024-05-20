@@ -27,7 +27,12 @@ const Register = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
-      const {data}= await axios.post('https://blog-backend-red-two.vercel.app/api/v1/user/register',{username:input.name,email:input.email,password:input.password})
+      const {data}= await axios.post('https://blog-backend-red-two.vercel.app/api/v1/user/register',{username:input.name,email:input.email,password:input.password},{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      })
       if(data?.success){
         
         navigate('/login');

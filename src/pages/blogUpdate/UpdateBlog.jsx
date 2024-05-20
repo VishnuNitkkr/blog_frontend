@@ -11,7 +11,12 @@ const UpdateBlog = () => {
   // get blog
   const getBlogdetails=async()=>{
     try {
-      const {data}=await axios.get(`https://blog-backend-red-two.vercel.app/api/v1/blog/get-blog/${id}`)
+      const {data}=await axios.get(`https://blog-backend-red-two.vercel.app/api/v1/blog/get-blog/${id}`,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json"
+        }
+      })
 
       if(data?.success){
         setBlog(data?.blog)
@@ -40,7 +45,12 @@ const UpdateBlog = () => {
        description:input.description,
        image:input.image,
        user:id
-     });
+     },{
+      withCredentials:true,
+      headers:{
+        "Content-Type":"application/json"
+      }
+    });
 
      if(data?.success){
         toast.success("Blog updated");

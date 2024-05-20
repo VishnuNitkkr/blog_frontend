@@ -3,7 +3,7 @@ import axios from 'axios'
 import Card from './../../components/card/Card.jsx';
 import './Blog.css'
 const Blog = () => {
-  const [blogs,setBlogs]=useState([null])
+  const [blogs,setBlogs]=useState([])
 
   //get all blogs
   const getAllBlogs=async()=>{
@@ -28,7 +28,7 @@ const Blog = () => {
     <div className='blogCard'>
     {blogs&&blogs.length>0? (blogs.map(blog=>(
       <Card
-        id ={blog._id}
+        key ={blog._id}
         isUser={localStorage.getItem('userId')===blog?.user._id}
         title={blog.title}
         description={blog.description}

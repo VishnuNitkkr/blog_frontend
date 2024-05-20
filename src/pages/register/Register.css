@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rjform{
+  
+  padding: 20px;
+  border: 2px solid rgb(147,112,219);
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px;
+  max-width: 30rem;
+}
+.rjform .btn{
+  background-color: rgb(147,112,219);
+  border: none;
+}
+.rjform .btn:hover{
+  background-color: rgb(98, 40, 214);
+}

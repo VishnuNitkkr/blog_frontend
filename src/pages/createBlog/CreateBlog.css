@@ -1,0 +1,11 @@
+.cbContainer{
+  
+  padding: 10px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1.7px solid rgba(120, 80, 200, 0.82);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px;
+  max-width: 50%;
+  min-width: 320px;
+}

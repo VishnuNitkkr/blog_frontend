@@ -31,7 +31,7 @@ const Blog = () => {
     <div className='blogCard'>
       {blogs && blogs.length > 0 ? (
         blogs.map(blog => (
-          blog && blog.user ? (
+          blog ? (
             <Card
               id={blog._id}
               isUser={localStorage.getItem('userId') === blog.user._id}
@@ -41,7 +41,7 @@ const Blog = () => {
               user={blog.user.username}
               time={blog.createdAt}
             />
-          ) : null
+          ) :(<h1>Unable to load the blogs</h1>)
         ))
       ) : (
         <h1>No blogs present till now!</h1>

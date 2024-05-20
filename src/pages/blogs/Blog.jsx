@@ -3,7 +3,7 @@ import axios from 'axios'
 import Card from './../../components/card/Card.jsx';
 import './Blog.css'
 const Blog = () => {
-  const [blogs,setBlogs]=useState([])
+  const [blogs,setBlogs]=useState([null])
 
   //get all blogs
   const getAllBlogs=async()=>{

@@ -1,45 +1,53 @@
-import React,{useState,useEffect} from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Card from './../../components/card/Card.jsx';
-import './Blog.css'
-const Blog = () => {
-  const [blogs,setBlogs]=useState([])
+import './Blog.css';
 
-  //get all blogs
-  const getAllBlogs=async()=>{
+const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  // Get all blogs
+  const getAllBlogs = async () => {
     try {
-      const {data}=await axios.get('https://blog-backend-red-two.vercel.app/api/v1/blog/all-blog',{
-        withCredentials:true,
-        headers:{
-          "Content-Type":"application/json"
+      const { data } = await axios.get('https://blog-backend-red-two.vercel.app/api/v1/blog/all-blog', {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json"
         }
       });
-      if(data?.success){
-        setBlogs(data.blogs)
+      if (data?.success) {
+        setBlogs(data.blogs);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
-  useEffect(()=>{
+
+  useEffect(() => {
     getAllBlogs();
-  },[])
+  }, []);
+
   return (
     <div className='blogCard'>
-    {blogs&&blogs.length>0? (blogs.map(blog=>(
-      <Card
-        key ={blog._id}
-        isUser={localStorage.getItem('userId')===blog?.user._id}
-        title={blog.title}
-        description={blog.description}
-        image={blog.image}
-        user={blog?.user.username}
-        time={blog?.user.createdAt}
-      />
-    ))):(<h1>No blogs present till now!</h1>)}
-      
+      {blogs && blogs.length > 0 ? (
+        blogs.map(blog => (
+          blog && blog.user ? (
+            <Card
+              key={blog._id}
+              isUser={localStorage.getItem('userId') === blog.user._id}
+              title={blog.title}
+              description={blog.description}
+              image={blog.image}
+              user={blog.user.username}
+              time={blog.createdAt}
+            />
+          ) : null
+        ))
+      ) : (
+        <h1>No blogs present till now!</h1>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

@@ -41,7 +41,7 @@ const Blog = () => {
               user={blog.user.username}
               time={blog.createdAt}
             />
-          ) : null
+          ) : Unable to fetch
         ))
       ) : (
         <h1>No blogs present till now!</h1>

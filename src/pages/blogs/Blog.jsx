@@ -33,7 +33,7 @@ const Blog = () => {
         blogs.map(blog => (
           blog && blog.user ? (
             <Card
-              key={blog._id}
+              id={blog._id}
               isUser={localStorage.getItem('userId') === blog.user._id}
               title={blog.title}
               description={blog.description}
